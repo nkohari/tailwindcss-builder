@@ -1,0 +1,1 @@
+export type Outline = 'none';

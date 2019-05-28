@@ -1,0 +1,36 @@
+{
+  "name": "tailwindcss-builder",
+  "author": "Nate Kohari <nkohari@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nkohari/tailwindcss-builder.git"
+  },
+  "main": "dist/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "jest": "^24.8.0",
+    "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "testMatch": [
+      "**/*.tests.+(ts|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|js)$": "ts-jest"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 120
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  }
+}
