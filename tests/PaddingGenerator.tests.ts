@@ -22,10 +22,9 @@ describe('PaddingGenerator', () => {
     tester.expect({ padding: { x: value, y: value } }, [`px-${value}`, `py-${value}`]);
   }
 
-  for (const side of SidePrefixes) {
-    const [name, modifier] = side;
+  for (const [side, modifier] of SidePrefixes) {
     for (const value of SpacingValues) {
-      tester.expect({ padding: { [name]: value } }, [`p${modifier}-${value}`]);
+      tester.expect({ padding: { [side]: value } }, [`p${modifier}-${value}`]);
     }
   }
 });

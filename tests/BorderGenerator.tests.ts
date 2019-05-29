@@ -19,13 +19,12 @@ describe('BorderGenerator', () => {
   tester.expect({ border: { radius: 'lg' } }, ['rounded-lg']);
   tester.expect({ border: { radius: 'full' } }, ['rounded-full']);
 
-  for (const side of SidePrefixes) {
-    const [name, modifier] = side;
-    tester.expect({ border: { radius: { [name]: 'none' } } }, [`rounded-${modifier}-none`]);
-    tester.expect({ border: { radius: { [name]: 'sm' } } }, [`rounded-${modifier}-sm`]);
-    tester.expect({ border: { radius: { [name]: 'rounded' } } }, [`rounded-${modifier}`]);
-    tester.expect({ border: { radius: { [name]: 'lg' } } }, [`rounded-${modifier}-lg`]);
-    tester.expect({ border: { radius: { [name]: 'full' } } }, [`rounded-${modifier}-full`]);
+  for (const [side, modifier] of SidePrefixes) {
+    tester.expect({ border: { radius: { [side]: 'none' } } }, [`rounded-${modifier}-none`]);
+    tester.expect({ border: { radius: { [side]: 'sm' } } }, [`rounded-${modifier}-sm`]);
+    tester.expect({ border: { radius: { [side]: 'rounded' } } }, [`rounded-${modifier}`]);
+    tester.expect({ border: { radius: { [side]: 'lg' } } }, [`rounded-${modifier}-lg`]);
+    tester.expect({ border: { radius: { [side]: 'full' } } }, [`rounded-${modifier}-full`]);
   }
 
   tester.expect({ border: { style: 'solid' } }, ['border-solid']);
@@ -39,12 +38,11 @@ describe('BorderGenerator', () => {
   tester.expect({ border: { width: 4 } }, ['border-4']);
   tester.expect({ border: { width: 8 } }, ['border-8']);
 
-  for (const side of SidePrefixes) {
-    const [name, modifier] = side;
-    tester.expect({ border: { width: { [name]: 0 } } }, [`border-${modifier}-0`]);
-    tester.expect({ border: { width: { [name]: 1 } } }, [`border-${modifier}`]);
-    tester.expect({ border: { width: { [name]: 2 } } }, [`border-${modifier}-2`]);
-    tester.expect({ border: { width: { [name]: 4 } } }, [`border-${modifier}-4`]);
-    tester.expect({ border: { width: { [name]: 8 } } }, [`border-${modifier}-8`]);
+  for (const [side, modifier] of SidePrefixes) {
+    tester.expect({ border: { width: { [side]: 0 } } }, [`border-${modifier}-0`]);
+    tester.expect({ border: { width: { [side]: 1 } } }, [`border-${modifier}`]);
+    tester.expect({ border: { width: { [side]: 2 } } }, [`border-${modifier}-2`]);
+    tester.expect({ border: { width: { [side]: 4 } } }, [`border-${modifier}-4`]);
+    tester.expect({ border: { width: { [side]: 8 } } }, [`border-${modifier}-8`]);
   }
 });

@@ -1,4 +1,4 @@
-import { Generator } from './generators';
+import { Generator } from './generators/Generator';
 import {
   Config,
   ConfigVariant,
@@ -41,9 +41,8 @@ function* generateClassesForAllVariants(
   yield* generateClassesForVariant(generators, config);
 
   // If any interaction variants (eg. hover) are specified, generate CSS classes for them as well.
-  for (const variant of INTERACTION_VARIANTS) {
-    const [name, modifier] = variant;
-    for (const variantClass of generateClassesForVariant(generators, config[name])) {
+  for (const [variant, modifier] of INTERACTION_VARIANTS) {
+    for (const variantClass of generateClassesForVariant(generators, config[variant])) {
       yield `${modifier}:${variantClass}`;
     }
   }
@@ -55,9 +54,8 @@ export function* generateClasses(generators: Generator[], config: Config) {
     yield* generateClassesForAllVariants(generators, config);
   } else {
     // Generate prefixed CSS classes for each responsive size specified in the config.
-    for (const variant of RESPONSIVE_SIZE_VARIANTS) {
-      const [name, modifier] = variant;
-      for (const sizeClass of generateClassesForAllVariants(generators, config[name])) {
+    for (const [variant, modifier] of RESPONSIVE_SIZE_VARIANTS) {
+      for (const sizeClass of generateClassesForAllVariants(generators, config[variant])) {
         yield `${modifier}:${sizeClass}`;
       }
     }

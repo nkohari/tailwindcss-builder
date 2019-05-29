@@ -1,4 +1,3 @@
-export * from './Generator';
 export * from './AppearanceGenerator';
 export * from './BackgroundGenerator';
 export * from './BorderGenerator';

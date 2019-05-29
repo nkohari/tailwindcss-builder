@@ -1,4 +1,4 @@
-import { Generator } from '../../src/generators';
+import { Generator } from '../../src/generators/Generator';
 import { ConfigVariant } from '../../src/config';
 
 export class Tester<T extends Generator> {
